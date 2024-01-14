@@ -20,10 +20,6 @@ while running:
         # exit button
         if event.type == pygame.QUIT:
             running = False
-        # key
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                print("Spacebar was pressed")
 
     # draw
     pygame.draw.circle(screen, pygame.Color(255, 0, 0), (50, 50), 16)
