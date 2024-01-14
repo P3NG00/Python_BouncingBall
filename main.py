@@ -17,10 +17,12 @@ fps = 60
 window = {
     'width': 1280,
     'height': 800,
+    'background': pygame.Color(0, 0, 0),
 }
 ball = {
     'color': pygame.Color(255, 0, 0),
     'radius': 16,
+    'speed': 10,
     'position': pygame.Vector2(window['width'] / 2.0, window['height'] / 2.0),
     'direction': random_unit_vector(),
 }
@@ -41,9 +43,11 @@ while running:
             running = False
 
     # update ball position
-    ball['position'] += ball['direction']
+    ball['position'] += (ball['direction'] * ball['speed'])
     # TODO bounce off walls
 
+    # clear screen
+    screen.fill(window['background'])
     # draw ball
     pygame.draw.circle(screen, ball['color'], ball['position'], ball['radius'])
     pygame.display.flip()
