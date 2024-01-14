@@ -5,6 +5,8 @@ import pygame
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 800
 FRAMES_PER_SECOND = 60
+BALL_COLOR = pygame.Color(255, 0, 0)
+BALL_RADIUS = 16
 
 # init
 pygame.init()
@@ -22,7 +24,7 @@ while running:
             running = False
 
     # draw
-    pygame.draw.circle(screen, pygame.Color(255, 0, 0), (50, 50), 16)
+    pygame.draw.circle(screen, BALL_COLOR, (WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0), BALL_RADIUS)
     pygame.display.flip()
 
     # handle time
