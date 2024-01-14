@@ -2,15 +2,20 @@ from pygame.time import Clock
 import pygame
 
 # settings
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 800
-FRAMES_PER_SECOND = 60
-BALL_COLOR = pygame.Color(255, 0, 0)
-BALL_RADIUS = 16
+fps = 60
+window = {
+    'width': 1280,
+    'height': 800,
+}
+ball = {
+    'color': pygame.Color(255, 0, 0),
+    'radius': 16,
+    'position': pygame.Vector2(window['width'] / 2.0, window['height'] / 2.0)
+}
 
 # init
 pygame.init()
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+screen = pygame.display.set_mode((window['width'], window['height']))
 clock = Clock()
 running = True
 
@@ -23,9 +28,11 @@ while running:
         if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
             running = False
 
-    # draw
-    pygame.draw.circle(screen, BALL_COLOR, (WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0), BALL_RADIUS)
-    pygame.display.flip()
+    # update ball position
+    # TODO
 
+    # draw ball
+    pygame.draw.circle(screen, ball['color'], ball['position'], ball['radius'])
+    pygame.display.flip()
     # handle time
-    clock.tick(FRAMES_PER_SECOND)
+    clock.tick(fps)
