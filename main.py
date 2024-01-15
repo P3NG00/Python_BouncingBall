@@ -56,7 +56,16 @@ while running:
     # update ball position
     ball['position'] += (ball['direction'] * ball['speed'])
     print(output_format.format(ball['position'].x, ball['position'].y, ball['direction'].x, ball['direction'].y))
-    # TODO bounce off walls
+
+    # bounce off walls
+    if ball['position'].x + ball['radius'] > window['width'] / 2:
+        ball['direction'].x = -ball['direction'].x
+    if ball['position'].x - ball['radius'] < -window['width'] / 2:
+        ball['direction'].x = -ball['direction'].x
+    if ball['position'].y + ball['radius'] > window['height'] / 2:
+        ball['direction'].y = -ball['direction'].y
+    if ball['position'].y - ball['radius'] < -window['height'] / 2:
+        ball['direction'].y = -ball['direction'].y
 
     # clear screen
     screen.fill(window['background'])
