@@ -24,7 +24,6 @@ ball = {
     'color': Color(255, 0, 0),
     'radius': 16,
     'speed': 10,
-    # TODO replace position with 'Vector2(0, 0)' and implement camera
     'position': Vector2(0, 0),
     'direction': random_unit_vector(),
 }
