@@ -2,14 +2,15 @@ import math
 import random
 
 import pygame
+from pygame import Vector2, Color
 from pygame.time import Clock
 
 
-def random_unit_vector() -> pygame.Vector2:
+def random_unit_vector() -> Vector2:
     angle = random.uniform(0, 2.0 * math.pi)
     x = math.cos(angle)
     y = math.sin(angle)
-    return pygame.Vector2(x, y)
+    return Vector2(x, y)
 
 
 # settings
@@ -17,14 +18,14 @@ window = {
     'width': 1280,
     'height': 800,
     'fps': 60,
-    'background': pygame.Color(0, 0, 0),
+    'background': Color(0, 0, 0),
 }
 ball = {
-    'color': pygame.Color(255, 0, 0),
+    'color': Color(255, 0, 0),
     'radius': 16,
     'speed': 10,
-    # TODO replace position with 'pygame.Vector2(0, 0)' and implement camera
-    'position': pygame.Vector2(0, 0),
+    # TODO replace position with 'Vector2(0, 0)' and implement camera
+    'position': Vector2(0, 0),
     'direction': random_unit_vector(),
 }
 digits = {
@@ -38,7 +39,7 @@ pygame.init()
 screen = pygame.display.set_mode((window['width'], window['height']))
 clock = Clock()
 running = True
-camera_offset = -pygame.Vector2(window['width'] / 2, window['height'] / 2)
+camera_offset = -Vector2(window['width'] / 2, window['height'] / 2)
 output_format = f' | pos_x: {{:>{digits['decimals'] + digits['position']},.{digits['decimals']}f}}' \
                 f' | pos_y: {{:>{digits['decimals'] + digits['position']},.{digits['decimals']}f}}' \
                 f' | dir_x: {{:>{digits['decimals'] + digits['direction']},.{digits['decimals']}f}}' \
